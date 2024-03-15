@@ -26,11 +26,13 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@appuniversum/ember-appuniversum": "^2.15.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@lblod/ember-rdfa-editor": "10.0.0-dev.f7b9755ef58e03abbba35a6973d8f0b08ba5d79d",
     "@tsconfig/ember": "^3.0.5",
     "@types/ember": "^4.0.11",
     "@types/ember__application": "^4.0.11",
@@ -76,7 +78,7 @@
     "ember-data": "~4.11.3",
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^2.1.2",
-    "ember-modifier": "^4.1.0",
+    "ember-modifier": "^3.2.7",
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^10.0.0",
@@ -105,5 +107,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "vm-browserify": "^1.1.2"
   }
 }
