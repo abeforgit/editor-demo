@@ -6,9 +6,9 @@ import { tracked } from '@glimmer/tracking';
 import { Chart } from 'chart.js';
 import { v4 as uuidv4 } from 'uuid';
 
-interface Args extends EmberNodeArgs {}
+type Args = EmberNodeArgs;
 
-export default class EmberChartViewComponent extends Component<Args> {
+export default class EmberChartViewBackupComponent extends Component<Args> {
   @tracked
   chart: Chart | null = null;
   get controller() {

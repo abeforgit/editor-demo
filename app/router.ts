@@ -9,4 +9,5 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('simple');
   this.route('full');
+  this.route('simple-backup');
 });

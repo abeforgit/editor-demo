@@ -14,10 +14,6 @@ import {
   textblockTypeInputRule,
   type PluginConfig,
 } from '@lblod/ember-rdfa-editor';
-import { header_demo } from '../nodes/header-demo-backup';
-import { chart_data } from 'editor-demo/nodes/chart-data-backup';
-import { chart, chartView, emberChartView, ember_chart } from 'editor-demo/nodes/chart-backup';
-import { chartConnector } from 'editor-demo/plugins/chart-connector-backup';
 export default class SimpleController extends Controller {
   @tracked controller?: SayController;
   @service declare intl: IntlService;
@@ -27,10 +23,10 @@ export default class SimpleController extends Controller {
         defaultLanguage: 'nl-BE',
       }),
       paragraph,
-      header_demo,
+      // header_demo,
       // chart,
-      ember_chart,
-      chart_data,
+      // ember_chart,
+      // chart_data,
 
       text,
     },
@@ -38,44 +34,44 @@ export default class SimpleController extends Controller {
   });
 
   @tracked plugins: PluginConfig = [
-    chartConnector(),
+    // chartConnector(),
     inputRules({
       rules: [
-        textblockTypeInputRule(/^\* /, this.schema.nodes.header_demo),
-        new InputRule(
-          /^:chart-(?<id>.+):/,
-          (
-            state: EditorState,
-            match: RegExpMatchArray,
-            start: number,
-            end: number
-          ) => {
-            const tr = state.tr;
-            tr.replaceRangeWith(
-              start,
-              end,
-              state.schema.node('ember_chart', { chartId: match.groups?.['id'] })
-            );
-            return tr;
-          }
-        ),
-        new InputRule(
-          /^:data-(?<id>.+):/,
-          (
-            state: EditorState,
-            match: RegExpMatchArray,
-            start: number,
-            end: number
-          ) => {
-            const tr = state.tr;
-            tr.replaceRangeWith(
-              start,
-              end,
-              state.schema.node('chart_data', { chartId: match.groups?.['id'] })
-            );
-            return tr;
-          }
-        ),
+        // textblockTypeInputRule(/^\* /, this.schema.nodes.header_demo),
+        //   new InputRule(
+        //     /^:chart-(?<id>.+):/,
+        //     (
+        //       state: EditorState,
+        //       match: RegExpMatchArray,
+        //       start: number,
+        //       end: number
+        //     ) => {
+        //       const tr = state.tr;
+        //       tr.replaceRangeWith(
+        //         start,
+        //         end,
+        //         state.schema.node('ember_chart', { chartId: match.groups?.['id'] })
+        //       );
+        //       return tr;
+        //     }
+        //   ),
+        //   new InputRule(
+        //     /^:data-(?<id>.+):/,
+        //     (
+        //       state: EditorState,
+        //       match: RegExpMatchArray,
+        //       start: number,
+        //       end: number
+        //     ) => {
+        //       const tr = state.tr;
+        //       tr.replaceRangeWith(
+        //         start,
+        //         end,
+        //         state.schema.node('chart_data', { chartId: match.groups?.['id'] })
+        //       );
+        //       return tr;
+        //     }
+        //   ),
       ],
     }),
   ];
@@ -83,8 +79,8 @@ export default class SimpleController extends Controller {
   @tracked nodeViews = (controller: SayController) => {
     // chartView;
     return {
-      ember_chart: emberChartView(controller)
-    }
+      // ember_chart: emberChartView(controller)
+    };
   };
 
   @action

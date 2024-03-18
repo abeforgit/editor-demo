@@ -11,7 +11,7 @@ import {
   createEmberNodeSpec,
   createEmberNodeView,
 } from '@lblod/ember-rdfa-editor/utils/ember-node';
-import EmberChartViewComponent from 'editor-demo/components/ember-chart-view';
+import EmberChartViewComponent from 'editor-demo/components/ember-chart-view-backup';
 
 import type { ComponentLike } from '@glint/template';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
