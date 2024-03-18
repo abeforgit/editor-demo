@@ -1,7 +1,11 @@
 {{page-title "EditorDemo"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<AuModalContainer />
 
-{{outlet}}
+<AuApp>
+  <div>
+    <AuLink @route="simple">simple</AuLink>
+    <AuLink @route="full">full</AuLink>
+  </div>
+  {{outlet}}
+</AuApp>

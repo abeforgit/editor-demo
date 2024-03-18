@@ -1,0 +1,83 @@
+{{page-title "Simple"}}
+
+<AuApp>
+  <div class="c-dummy__header">
+    <DebugTools @controller={{this.controller}} />
+  </div>
+
+  <AuBodyContainer>
+
+    <div class="c-dummy__content">
+      <div
+        vocab="http://data.vlaanderen.be/ns/foo#"
+        resource="#Foo"
+        typeof="Foo"
+      >
+        <div
+          vocab="http://data.vlaanderen.be/ns/besluit#"
+          prefix="eli: http://data.europa.eu/eli/ontology# prov: http://www.w3.org/ns/prov# mandaat: http://data.vlaanderen.be/ns/mandaat# besluit: http://data.vlaanderen.be/ns/besluit#"
+          class="app-view"
+        >
+          <div
+            class="au-c-body-container au-c-body-container--scroll"
+            id="panel-1"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-1"
+          >
+            <EditorContainer
+              @editorOptions={{hash
+                editRdfa="true"
+                showRdfaHighlight="false"
+                showRdfaHover="false"
+                showPaper="true"
+                showToolbarBottom=null
+              }}
+              @showRdfaBlocks={{false}}
+            >
+              <:top>
+                {{#if this.controller}}
+
+                  <ResponsiveToolbar>
+                    <:main as |Tb|>
+                      <Tb.Group>
+                        <Plugins::History::Undo
+                          @controller={{this.controller}}
+                        />
+                        <Plugins::History::Redo
+                          @controller={{this.controller}}
+                        />
+                      </Tb.Group>
+                    </:main>
+                    <:side as |Tb|>
+                      <Tb.Group>
+                        {{#if this.controller}}
+                          <Plugins::HtmlEditor::Menu
+                            @controller={{this.controller}}
+                          />
+                        {{/if}}
+                      </Tb.Group>
+                    </:side>
+                  </ResponsiveToolbar>
+                {{/if}}
+              </:top>
+              <:default>
+                <Editor
+                  @plugins={{this.plugins}}
+                  @schema={{this.schema}}
+                  @nodeViews={{this.nodeViews}}
+                  @rdfaEditorInit={{this.rdfaEditorInit}}
+                />
+              </:default>
+              <:aside>
+                <Sidebar>
+                </Sidebar>
+              </:aside>
+            </EditorContainer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </AuBodyContainer>
+</AuApp>
+{{outlet}}
