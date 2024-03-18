@@ -5,8 +5,12 @@ export const header_demo: NodeSpec = {
   group: 'block',
   parseDOM: [
     /*fill out*/
+    {
+      tag: 'h1'
+    }
   ],
-  // toDOM(node: PNode) {
-  //   // fill out
-  // },
+  toDOM(node: PNode) {
+    return ['h1', 0];
+    // fill out
+  },
 };

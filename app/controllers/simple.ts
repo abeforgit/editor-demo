@@ -10,10 +10,14 @@ import IntlService from 'ember-intl/services/intl';
 import {
   EditorState,
   InputRule,
+  PNode,
+  SayView,
   inputRules,
   textblockTypeInputRule,
   type PluginConfig,
 } from '@lblod/ember-rdfa-editor';
+import { header_demo } from 'editor-demo/nodes/header-demo';
+import { ChartView, chart } from 'editor-demo/nodes/chart';
 export default class SimpleController extends Controller {
   @tracked controller?: SayController;
   @service declare intl: IntlService;
@@ -23,8 +27,8 @@ export default class SimpleController extends Controller {
         defaultLanguage: 'nl-BE',
       }),
       paragraph,
-      // header_demo,
-      // chart,
+      header_demo,
+      chart,
       // ember_chart,
       // chart_data,
 
@@ -37,24 +41,24 @@ export default class SimpleController extends Controller {
     // chartConnector(),
     inputRules({
       rules: [
-        // textblockTypeInputRule(/^\* /, this.schema.nodes.header_demo),
-        //   new InputRule(
-        //     /^:chart-(?<id>.+):/,
-        //     (
-        //       state: EditorState,
-        //       match: RegExpMatchArray,
-        //       start: number,
-        //       end: number
-        //     ) => {
-        //       const tr = state.tr;
-        //       tr.replaceRangeWith(
-        //         start,
-        //         end,
-        //         state.schema.node('ember_chart', { chartId: match.groups?.['id'] })
-        //       );
-        //       return tr;
-        //     }
-        //   ),
+        textblockTypeInputRule(/^\* /, this.schema.nodes.header_demo),
+        new InputRule(
+            /^:chart-(?<id>.+):/,
+            (
+              state: EditorState,
+              match: RegExpMatchArray,
+              start: number,
+              end: number
+            ) => {
+              const tr = state.tr;
+              tr.replaceRangeWith(
+                start,
+                end,
+                state.schema.node('chart', { chartId: match.groups?.['id'] })
+              );
+              return tr;
+            }
+          ),
         //   new InputRule(
         //     /^:data-(?<id>.+):/,
         //     (
@@ -79,6 +83,8 @@ export default class SimpleController extends Controller {
   @tracked nodeViews = (controller: SayController) => {
     // chartView;
     return {
+      chart: (node: PNode, view: SayView, getPos: () => number) =>
+        new ChartView(node, view, getPos),
       // ember_chart: emberChartView(controller)
     };
   };
